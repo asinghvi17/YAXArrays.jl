@@ -496,10 +496,6 @@ end
 cubesize(c::YAXArray{T}) where {T} = (sizeof(T)) * prod(map(length, caxes(c)))
 cubesize(::YAXArray{T,0}) where {T} = sizeof(T)
 
-getCubeDes(::DD.Dimension) = "Cube axis"
-getCubeDes(::YAXArray) = "YAXArray"
-getCubeDes(::Type{T}) where {T} = string(T)
-
 function DD.show_after(io::IO,mime, c::YAXArray)
     foreach(getattributes(c)) do p
         if p[1] in ("labels", "name", "units")
